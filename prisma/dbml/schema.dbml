@@ -1,0 +1,23 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table Sketchbook {
+  id String [pk]
+  name String [not null]
+  shortDescription String
+  description String
+  pageRootUrl String [not null]
+  pages Page [not null]
+}
+
+Table Page {
+  id String [pk]
+  title String [not null]
+  file String [not null]
+  about String
+  sketchbook Sketchbook [not null]
+  sketchbookId String [not null]
+}
+
+Ref: Page.sketchbookId > Sketchbook.id

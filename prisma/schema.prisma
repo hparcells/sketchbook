@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator dbml {
+  provider = "prisma-dbml-generator"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Sketchbook {
+  id               String  @id @default(auto()) @map("_id") @db.ObjectId
+  name             String
+  shortDescription String?
+  description      String?
+
+  pageRootUrl String
+  pages       Page[]
+}
+
+model Page {
+  id    String  @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  file  String
+  about String?
+
+  sketchbook   Sketchbook @relation(fields: [sketchbookId], references: [id])
+  sketchbookId String     @db.ObjectId
+}
