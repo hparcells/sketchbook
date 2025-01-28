@@ -22,6 +22,8 @@
     "",
     "^@/actions/(.*)$",
     "",
+    "^@/database/(.*)$",
+    "",
     "^@/hooks/(.*)$",
     "",
     "^@/util/(.*)$",
@@ -30,5 +32,6 @@
     "",
     "\\.(s?css)$"
   ],
-  "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"]
+  "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"],
+  "importOrderSeparation": true
 }

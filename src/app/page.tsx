@@ -1,8 +1,24 @@
-function Home() {
+import Link from 'next/link';
+
+import { getSketchbooks } from '@/actions/sketchbook';
+
+async function Home() {
+  const sketchbooks = await getSketchbooks();
+
   return (
-    <>
-      <p>Hello world!</p>
-    </>
+    <div className='w-[1000px] m-auto p-4'>
+      <ul className='list-disc list-inside'>
+        {sketchbooks.map((sketchbook) => {
+          return (
+            <li key={sketchbook.id}>
+              <Link href={sketchbook.id} className='underline text-blue-500 hover:text-blue-700'>
+                {sketchbook.name}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
 
