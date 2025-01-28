@@ -4,14 +4,25 @@ import { Sketchbook } from '@prisma/client';
 
 import prisma from '@/database/database';
 
-export async function getSketchbooks(): Promise<Sketchbook[]> {
-  return await prisma.sketchbook.findMany();
+import { FullSketchbook } from '@/types/types';
+
+export async function getSketchbooks(): Promise<FullSketchbook[]> {
+  return await prisma.sketchbook.findMany({
+    include: {
+      pages: true,
+      days: true
+    }
+  });
 }
 
-export async function getSketchbook(sketchbookId: string): Promise<Sketchbook | null> {
+export async function getSketchbook(sketchbookId: string): Promise<FullSketchbook | null> {
   return await prisma.sketchbook.findUnique({
     where: {
       id: sketchbookId
+    },
+    include: {
+      pages: true,
+      days: true
     }
   });
 }

@@ -2,13 +2,14 @@
 
 import { useRouter } from 'next/navigation';
 import { Button, Heading, Input, Stack, Textarea } from '@chakra-ui/react';
-import { Sketchbook } from '@prisma/client';
 import { useForm } from 'react-hook-form';
+
+import DeleteSketchbookDialog from '@/components/dialog/DeleteSketchbookDialog';
+import { Field } from '@/components/ui/field';
 
 import { updateSketchbook } from '@/actions/sketchbook';
 
-import DeleteSketchbookDialog from '../dialog/DeleteSketchbookDialog';
-import { Field } from '../ui/field';
+import { FullSketchbook } from '@/types/types';
 
 interface SketchbookSettingsFormValues {
   name: string;
@@ -17,7 +18,7 @@ interface SketchbookSettingsFormValues {
   pageRootUrl: string;
 }
 
-function SketchbookSettings({ sketchbook }: { sketchbook: Sketchbook }) {
+function SketchbookSettings({ sketchbook }: { sketchbook: FullSketchbook }) {
   const {
     register,
     handleSubmit,

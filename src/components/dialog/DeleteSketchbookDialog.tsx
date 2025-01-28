@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation';
 import { Button, Em, Stack, Text } from '@chakra-ui/react';
-import { Sketchbook } from '@prisma/client';
 
 import {
   DialogActionTrigger,
@@ -18,7 +17,9 @@ import {
 
 import { deleteSketchbook } from '@/actions/sketchbook';
 
-function DeleteSketchbookDialog({ sketchbook }: { sketchbook: Sketchbook }) {
+import { FullSketchbook } from '@/types/types';
+
+function DeleteSketchbookDialog({ sketchbook }: { sketchbook: FullSketchbook }) {
   const router = useRouter();
 
   async function onDeleteClick() {
