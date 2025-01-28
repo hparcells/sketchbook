@@ -19,13 +19,23 @@ model Sketchbook {
 
   pageRootUrl String
   pages       Page[]
+  days        Day[]
 }
 
 model Page {
-  id    String  @id @default(auto()) @map("_id") @db.ObjectId
-  title String
-  file  String
-  about String?
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  fileName String
+  about    String?
+
+  sketchbook   Sketchbook @relation(fields: [sketchbookId], references: [id])
+  sketchbookId String     @db.ObjectId
+}
+
+model Day {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  day   Int
+  pages Int[]
 
   sketchbook   Sketchbook @relation(fields: [sketchbookId], references: [id])
   sketchbookId String     @db.ObjectId

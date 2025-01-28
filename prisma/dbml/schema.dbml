@@ -9,15 +9,26 @@ Table Sketchbook {
   description String
   pageRootUrl String [not null]
   pages Page [not null]
+  days Day [not null]
 }
 
 Table Page {
   id String [pk]
   title String [not null]
-  file String [not null]
+  fileName String [not null]
   about String
   sketchbook Sketchbook [not null]
   sketchbookId String [not null]
 }
 
+Table Day {
+  id String [pk]
+  day Int [not null]
+  pages Int[] [not null]
+  sketchbook Sketchbook [not null]
+  sketchbookId String [not null]
+}
+
 Ref: Page.sketchbookId > Sketchbook.id
+
+Ref: Day.sketchbookId > Sketchbook.id
