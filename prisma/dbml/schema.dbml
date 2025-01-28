@@ -14,7 +14,8 @@ Table Sketchbook {
 
 Table Page {
   id String [pk]
-  title String [not null]
+  index Int [not null]
+  name String [not null]
   fileName String [not null]
   sketchbook Sketchbook [not null]
   sketchbookId String [not null]
@@ -29,6 +30,6 @@ Table Day {
   sketchbookId String [not null]
 }
 
-Ref: Page.sketchbookId > Sketchbook.id
+Ref: Page.sketchbookId > Sketchbook.id [delete: Cascade]
 
-Ref: Day.sketchbookId > Sketchbook.id
+Ref: Day.sketchbookId > Sketchbook.id [delete: Cascade]

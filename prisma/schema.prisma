@@ -24,7 +24,8 @@ model Sketchbook {
 
 model Page {
   id       String @id @default(auto()) @map("_id") @db.ObjectId
-  title    String
+  index    Int
+  name     String
   fileName String
 
   sketchbook   Sketchbook @relation(fields: [sketchbookId], references: [id], onDelete: Cascade)

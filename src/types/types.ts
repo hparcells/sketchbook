@@ -6,3 +6,12 @@ export type FullSketchbook = Prisma.SketchbookGetPayload<{
     days: true;
   };
 }>;
+
+export interface SketchbookCreationFormValues {
+  name: string;
+}
+
+export interface PageCreationFormValues {
+  name: string;
+  fileName: string;
+}

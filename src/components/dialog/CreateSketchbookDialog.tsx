@@ -1,7 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Button, Input } from '@chakra-ui/react';
+import { Button, Input, Stack } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { RiAddFill } from 'react-icons/ri';
 
@@ -20,21 +21,22 @@ import { Field } from '@/components/ui/field';
 
 import { createSketchbook } from '@/actions/sketchbook';
 
-interface SketchbookCreationFormValues {
-  name: string;
-}
+import { SketchbookCreationFormValues } from '@/types/types';
 
 function CreateSketchbookDialog() {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors, isValid }
   } = useForm<SketchbookCreationFormValues>();
+
+  const [disabled, setDisabled] = useState(false);
 
   const router = useRouter();
 
   const onSubmit = handleSubmit(async (data) => {
-    const sketchbook = await createSketchbook(data.name);
+    setDisabled(true);
+    const sketchbook = await createSketchbook(data);
 
     router.push(`/admin/${sketchbook.id}`);
   });
@@ -52,19 +54,23 @@ function CreateSketchbookDialog() {
         </DialogHeader>
         <DialogBody>
           <form onSubmit={onSubmit}>
-            <Field label='Name' invalid={!!errors.name} errorText={errors.name?.message} required>
-              <Input
-                {...register('name', { required: 'Name is required.' })}
-                placeholder='My Sketchbook'
-              />
-            </Field>
+            <Stack>
+              <Field label='Name' invalid={!!errors.name} errorText={errors.name?.message} required>
+                <Input
+                  {...register('name', { required: 'Name is required.' })}
+                  placeholder='My Sketchbook'
+                />
+              </Field>
+            </Stack>
           </form>
         </DialogBody>
         <DialogFooter>
           <DialogActionTrigger asChild>
             <Button variant='outline'>Cancel</Button>
           </DialogActionTrigger>
-          <Button type='submit'>Create</Button>
+          <Button type='submit' disabled={!isValid || disabled}>
+            Create
+          </Button>
         </DialogFooter>
         <DialogCloseTrigger />
       </DialogContent>

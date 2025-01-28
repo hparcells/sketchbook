@@ -16,8 +16,8 @@ async function Home() {
               <li key={sketchbook.id}>
                 <Link href={sketchbook.id} className='underline text-blue-500 hover:text-blue-700'>
                   {sketchbook.name}
-                </Link>
-                : {sketchbook.shortDescription || '(No description provided)'}
+                </Link>{' '}
+                — {sketchbook.shortDescription || '(No description provided)'}
               </li>
             );
           })}

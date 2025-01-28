@@ -4,7 +4,7 @@ import { Sketchbook } from '@prisma/client';
 
 import prisma from '@/database/database';
 
-import { FullSketchbook } from '@/types/types';
+import { FullSketchbook, SketchbookCreationFormValues } from '@/types/types';
 
 export async function getSketchbooks(): Promise<FullSketchbook[]> {
   return await prisma.sketchbook.findMany({
@@ -27,10 +27,12 @@ export async function getSketchbook(sketchbookId: string): Promise<FullSketchboo
   });
 }
 
-export async function createSketchbook(name: string): Promise<Sketchbook> {
+export async function createSketchbook(
+  formData: SketchbookCreationFormValues
+): Promise<Sketchbook> {
   return await prisma.sketchbook.create({
     data: {
-      name,
+      name: formData.name,
       description: '',
       shortDescription: '',
       pageRootUrl: ''

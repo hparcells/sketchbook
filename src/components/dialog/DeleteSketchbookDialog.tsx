@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button, Em, Stack, Text } from '@chakra-ui/react';
 
@@ -22,7 +23,10 @@ import { FullSketchbook } from '@/types/types';
 function DeleteSketchbookDialog({ sketchbook }: { sketchbook: FullSketchbook }) {
   const router = useRouter();
 
+  const [disabled, setDisabled] = useState(false);
+
   async function onDeleteClick() {
+    setDisabled(true);
     await deleteSketchbook(sketchbook.id);
 
     router.push('/admin');
@@ -51,7 +55,7 @@ function DeleteSketchbookDialog({ sketchbook }: { sketchbook: FullSketchbook }) 
           <DialogActionTrigger asChild>
             <Button variant='outline'>Cancel</Button>
           </DialogActionTrigger>
-          <Button colorPalette='red' onClick={onDeleteClick}>
+          <Button colorPalette='red' onClick={onDeleteClick} disabled={disabled}>
             Delete
           </Button>
         </DialogFooter>
