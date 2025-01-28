@@ -8,6 +8,14 @@ export async function getSketchbooks(): Promise<Sketchbook[]> {
   return await prisma.sketchbook.findMany();
 }
 
+export async function getSketchbook(sketchbookId: string): Promise<Sketchbook | null> {
+  return await prisma.sketchbook.findUnique({
+    where: {
+      id: sketchbookId
+    }
+  });
+}
+
 export async function createSketchbook(name: string): Promise<Sketchbook> {
   return await prisma.sketchbook.create({
     data: {

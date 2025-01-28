@@ -2,4 +2,5 @@
 
 ## `.env`
 - `DATABASE_URL`: MongoDB connection string.
-- `ADMIN_PASSWORD`: Admin panel password.
+- `IRON_SESSION_SECRET`: 32+ character secret.
+- `IRON_SESSION_PASSWORD`: Password to access admin pages.

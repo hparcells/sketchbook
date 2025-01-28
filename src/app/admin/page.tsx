@@ -10,8 +10,12 @@ async function Admin() {
 
   return (
     <div className='max-w-[1000px] w-full m-auto p-4'>
+      <ChakraLink asChild className='mb-4'>
+        <Link href='/'>Home</Link>
+      </ChakraLink>
+
       <Stack align='flex-start '>
-        <Heading size='xl'>Sketchbooks</Heading>
+        <Heading size='2xl'>Manage Sketchbooks</Heading>
         <CreateSketchbookDialog />
         <List.Root>
           {sketchbooks.map((sketchbook) => {
