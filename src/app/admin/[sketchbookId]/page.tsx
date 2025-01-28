@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { Link as ChakraLink, Em, Heading, Tabs, Text } from '@chakra-ui/react';
-import { FaBook, FaCog } from 'react-icons/fa';
+import { FaCalendar, FaCog, FaImage } from 'react-icons/fa';
 
+import SketchbookDays from '@/components/tabs/SketchbookDays';
 import SketchbookPages from '@/components/tabs/SketchbookPages';
 import SketchbookSettings from '@/components/tabs/SketchbookSettings';
 
@@ -32,8 +33,12 @@ async function AdminSketchbook({ params }: { params: Promise<{ sketchbookId: str
       <Tabs.Root defaultValue='pages' variant='line'>
         <Tabs.List>
           <Tabs.Trigger value='pages'>
-            <FaBook />
+            <FaImage />
             Pages
+          </Tabs.Trigger>
+          <Tabs.Trigger value='days'>
+            <FaCalendar />
+            Days
           </Tabs.Trigger>
           <Tabs.Trigger value='settings'>
             <FaCog />
@@ -43,8 +48,11 @@ async function AdminSketchbook({ params }: { params: Promise<{ sketchbookId: str
         <Tabs.Content value='pages'>
           <SketchbookPages />
         </Tabs.Content>
+        <Tabs.Content value='days'>
+          <SketchbookDays />
+        </Tabs.Content>
         <Tabs.Content value='settings'>
-          <SketchbookSettings />
+          <SketchbookSettings sketchbook={sketchbook} />
         </Tabs.Content>
       </Tabs.Root>
     </div>

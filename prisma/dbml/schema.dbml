@@ -16,7 +16,6 @@ Table Page {
   id String [pk]
   title String [not null]
   fileName String [not null]
-  about String
   sketchbook Sketchbook [not null]
   sketchbookId String [not null]
 }
@@ -25,6 +24,7 @@ Table Day {
   id String [pk]
   day Int [not null]
   pages Int[] [not null]
+  about String
   sketchbook Sketchbook [not null]
   sketchbookId String [not null]
 }

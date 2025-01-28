@@ -26,3 +26,31 @@ export async function createSketchbook(name: string): Promise<Sketchbook> {
     }
   });
 }
+
+export async function updateSketchbook(
+  sketchbookId: string,
+  name: string,
+  shortDescription: string,
+  description: string,
+  pageRootUrl: string
+): Promise<Sketchbook> {
+  return await prisma.sketchbook.update({
+    where: {
+      id: sketchbookId
+    },
+    data: {
+      name,
+      shortDescription,
+      description,
+      pageRootUrl
+    }
+  });
+}
+
+export async function deleteSketchbook(sketchbookId: string): Promise<void> {
+  await prisma.sketchbook.delete({
+    where: {
+      id: sketchbookId
+    }
+  });
+}

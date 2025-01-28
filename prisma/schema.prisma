@@ -23,20 +23,20 @@ model Sketchbook {
 }
 
 model Page {
-  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
   title    String
   fileName String
-  about    String?
 
-  sketchbook   Sketchbook @relation(fields: [sketchbookId], references: [id])
+  sketchbook   Sketchbook @relation(fields: [sketchbookId], references: [id], onDelete: Cascade)
   sketchbookId String     @db.ObjectId
 }
 
 model Day {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  id    String  @id @default(auto()) @map("_id") @db.ObjectId
   day   Int
   pages Int[]
+  about String?
 
-  sketchbook   Sketchbook @relation(fields: [sketchbookId], references: [id])
+  sketchbook   Sketchbook @relation(fields: [sketchbookId], references: [id], onDelete: Cascade)
   sketchbookId String     @db.ObjectId
 }

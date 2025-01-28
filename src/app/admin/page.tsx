@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Link as ChakraLink, Heading, List, Stack } from '@chakra-ui/react';
+import { Link as ChakraLink, Heading, List, Stack, Text } from '@chakra-ui/react';
 
 import CreateSketchbookDialog from '@/components/dialog/CreateSketchbookDialog';
 
@@ -27,6 +27,7 @@ async function Admin() {
               </List.Item>
             );
           })}
+          {sketchbooks.length === 0 && <Text>No configured sketchbooks.</Text>}
         </List.Root>
       </Stack>
     </div>
