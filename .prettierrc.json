@@ -30,7 +30,9 @@
     "",
     "^@/types/(.*)$",
     "",
-    "\\.(s?css)$"
+    "\\.(s?css)$",
+    "",
+    "^[./]"
   ],
   "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"],
   "importOrderSeparation": true

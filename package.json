@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack -p 8000",
+    "dev": "next dev -p 8000",
     "build": "next build",
     "start": "next start",
     "lint": "eslint \"src/**/*.+(ts|tsx)\"",
@@ -12,10 +12,15 @@
     "format:check": "prettier . --check"
   },
   "dependencies": {
+    "@chakra-ui/react": "^3.5.1",
+    "@emotion/react": "^11.14.0",
     "@prisma/client": "^6.2.1",
     "next": "15.1.6",
+    "next-themes": "^0.4.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
+    "react-icons": "^5.4.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

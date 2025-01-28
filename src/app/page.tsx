@@ -6,7 +6,7 @@ async function Home() {
   const sketchbooks = await getSketchbooks();
 
   return (
-    <div className='w-[1000px] m-auto p-4'>
+    <div className='max-w-[1000px] w-full m-auto p-4'>
       <ul className='list-disc list-inside'>
         {sketchbooks.map((sketchbook) => {
           return (
