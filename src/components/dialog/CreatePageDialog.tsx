@@ -79,7 +79,13 @@ function CreatePageDialog({ sketchbook }: { sketchbook: FullSketchbook }) {
               required
             >
               <Input
-                {...register('fileName', { required: 'File Name is required.' })}
+                {...register('fileName', {
+                  required: 'File Name is required.',
+                  pattern: {
+                    value: /^[a-zA-Z0-9-_]+\.(png|jpg)$/,
+                    message: 'Invalid File Name.'
+                  }
+                })}
                 placeholder='727.jpg'
               />
             </Field>

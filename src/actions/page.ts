@@ -16,10 +16,16 @@ export async function createPage(
   if (!sketchbook) {
     return null;
   }
+
   const indices = sketchbook.pages.map((page) => {
     return page.index;
   });
-  const maxIndex = Math.max(...indices);
+  let maxIndex;
+  if (indices.length === 0) {
+    maxIndex = 0;
+  } else {
+    maxIndex = Math.max(...indices);
+  }
 
   return await prisma.page.create({
     data: {
