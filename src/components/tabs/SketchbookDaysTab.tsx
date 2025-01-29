@@ -1,7 +1,7 @@
 import { FullSketchbook } from '@/types/types';
 
-function SketchbookDays({ sketchbook }: { sketchbook: FullSketchbook }) {
+function SketchbookDaysTab({ sketchbook }: { sketchbook: FullSketchbook }) {
   return <p>{JSON.stringify(sketchbook.days)}</p>;
 }
 
-export default SketchbookDays;
+export default SketchbookDaysTab;

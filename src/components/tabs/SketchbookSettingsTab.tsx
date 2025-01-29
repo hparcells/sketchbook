@@ -18,7 +18,7 @@ interface SketchbookSettingsFormValues {
   pageRootUrl: string;
 }
 
-function SketchbookSettings({ sketchbook }: { sketchbook: FullSketchbook }) {
+function SketchbookSettingsTab({ sketchbook }: { sketchbook: FullSketchbook }) {
   const {
     register,
     handleSubmit,
@@ -104,4 +104,4 @@ function SketchbookSettings({ sketchbook }: { sketchbook: FullSketchbook }) {
   );
 }
 
-export default SketchbookSettings;
+export default SketchbookSettingsTab;
