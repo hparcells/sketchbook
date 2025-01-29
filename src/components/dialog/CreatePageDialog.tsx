@@ -29,7 +29,12 @@ function CreatePageDialog({ sketchbook }: { sketchbook: FullSketchbook }) {
     handleSubmit,
     reset,
     formState: { errors, isValid }
-  } = useForm<PageCreationFormValues>();
+  } = useForm<PageCreationFormValues>({
+    defaultValues: {
+      name: '',
+      fileName: ''
+    }
+  });
 
   const router = useRouter();
 
