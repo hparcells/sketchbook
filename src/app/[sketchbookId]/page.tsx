@@ -15,7 +15,7 @@ async function Sketchbook({ params }: { params: Promise<{ sketchbookId: string }
   const pages = sketchbook.pages;
 
   return (
-    <div className='max-w-[1000px] w-full m-auto p-4'>
+    <div className='max-w-[1200px] w-full m-auto p-4'>
       <ChakraLink asChild className='mb-4'>
         <Link href='/'>Back</Link>
       </ChakraLink>
