@@ -45,6 +45,9 @@ export async function getPages(sketchbookId: string): Promise<Page[]> {
   return await prisma.page.findMany({
     where: {
       sketchbookId
+    },
+    orderBy: {
+      index: 'asc'
     }
   });
 }

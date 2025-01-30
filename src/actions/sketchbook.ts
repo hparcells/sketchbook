@@ -16,15 +16,24 @@ export async function getSketchbooks(): Promise<FullSketchbook[]> {
 }
 
 export async function getSketchbook(sketchbookId: string): Promise<FullSketchbook | null> {
-  return await prisma.sketchbook.findUnique({
-    where: {
-      id: sketchbookId
-    },
-    include: {
-      pages: true,
-      days: true
-    }
-  });
+  try {
+    return await prisma.sketchbook.findUnique({
+      where: {
+        id: sketchbookId
+      },
+      include: {
+        pages: {
+          orderBy: {
+            index: 'asc'
+          }
+        },
+        days: true
+      }
+    });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (e) {
+    return null;
+  }
 }
 
 export async function createSketchbook(
