@@ -34,7 +34,7 @@ async function Sketchbook({ params }: { params: Promise<{ sketchbookId: string }
             // defaultOpen={chunks.length === i + 1}
             key={i}
           >
-            <Collapsible.Trigger>
+            <Collapsible.Trigger className='cursor-pointer'>
               <Heading size='xl' className='mb-2'>
                 Pages {1 + i * 20}-
                 {pages.length === 10 ? (i + 1) * 20 : (chunks.length - 1) * 20 + 2 * pages.length}
