@@ -42,10 +42,15 @@ async function Sketchbook({ params }: { params: Promise<{ sketchbookId: string }
             </Collapsible.Trigger>
             <Collapsible.Content>
               <div className='flex flex-col gap-1'>
-                {pages.map((page) => {
+                {pages.map((page, j) => {
                   return (
                     <Image
-                      src={`${sketchbook.pageRootUrl}${page.fileName}`}
+                      src={
+                        process.env.NODE_ENV === 'production'
+                          ? `${sketchbook.pageRootUrl}${page.fileName}`
+                          : 'https://picsum.photos/3200/2500'
+                      }
+                      id={`${i * 20 + j * 2 + 1}`}
                       alt={page.name}
                       key={page.id}
                       loading='lazy'
