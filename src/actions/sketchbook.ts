@@ -6,11 +6,23 @@ import prisma from '@/database/database';
 
 import { FullSketchbook, SketchbookCreationFormValues } from '@/types/types';
 
+export async function getAllSketchbooks(): Promise<FullSketchbook[]> {
+  return await prisma.sketchbook.findMany({
+    include: {
+      pages: true,
+      days: true
+    }
+  });
+}
+
 export async function getSketchbooks(): Promise<FullSketchbook[]> {
   return await prisma.sketchbook.findMany({
     include: {
       pages: true,
       days: true
+    },
+    where: {
+      unlisted: false
     }
   });
 }

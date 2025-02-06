@@ -7,6 +7,7 @@ Table Sketchbook {
   name String [not null]
   shortDescription String
   description String
+  unlisted Boolean [not null, default: false]
   pageRootUrl String [not null]
   pages Page [not null]
   days Day [not null]

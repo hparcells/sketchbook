@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import { Link as ChakraLink, Heading, List, Stack, Text } from '@chakra-ui/react';
+import { Link as ChakraLink, Em, Heading, List, Stack, Text } from '@chakra-ui/react';
 
 import CreateSketchbookDialog from '@/components/dialog/CreateSketchbookDialog';
 
-import { getSketchbooks } from '@/actions/sketchbook';
+import { getAllSketchbooks } from '@/actions/sketchbook';
 
 async function Admin() {
-  const sketchbooks = await getSketchbooks();
+  const sketchbooks = await getAllSketchbooks();
 
   return (
     <div className='max-w-[1000px] w-full m-auto p-4'>
@@ -22,7 +22,10 @@ async function Admin() {
             return (
               <List.Item key={sketchbook.id}>
                 <ChakraLink variant='underline' asChild>
-                  <Link href={`admin/${sketchbook.id}`}>{sketchbook.name}</Link>
+                  <Link href={`admin/${sketchbook.id}`}>
+                    {sketchbook.name}
+                    {sketchbook.unlisted && <Em>(Unlisted)</Em>}
+                  </Link>
                 </ChakraLink>
               </List.Item>
             );

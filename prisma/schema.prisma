@@ -16,6 +16,7 @@ model Sketchbook {
   name             String
   shortDescription String?
   description      String?
+  unlisted         Boolean @default(false)
 
   pageRootUrl String
   pages       Page[]
