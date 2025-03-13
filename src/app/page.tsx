@@ -3,6 +3,8 @@ import { Heading, Stack, Text } from '@chakra-ui/react';
 
 import { getSketchbooks } from '@/actions/sketchbook';
 
+export const dynamic = 'force-dynamic';
+
 async function Home() {
   const sketchbooks = await getSketchbooks();
 

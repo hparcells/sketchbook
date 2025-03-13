@@ -5,6 +5,8 @@ import CreateSketchbookDialog from '@/components/dialog/CreateSketchbookDialog';
 
 import { getAllSketchbooks } from '@/actions/sketchbook';
 
+export const dynamic = 'force-dynamic';
+
 async function Admin() {
   const sketchbooks = await getAllSketchbooks();
 
