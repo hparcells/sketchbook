@@ -60,6 +60,10 @@ export async function getPage(pageId: string): Promise<Page | null> {
   });
 }
 
+export async function getAllPages(): Promise<Page[]> {
+  return await prisma.page.findMany();
+}
+
 export async function deletePage(pageId: string): Promise<Page> {
   return await prisma.page.delete({
     where: {

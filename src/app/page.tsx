@@ -12,6 +12,9 @@ async function Home() {
     <div className='max-w-[1000px] w-full m-auto p-4'>
       <Stack>
         <Heading size='2xl'>Sketchbooks</Heading>
+        <Link href='/gallery' className='underline text-blue-500 hover:text-blue-700'>
+          Gallery View
+        </Link>
         <ul className='list-disc list-inside'>
           {sketchbooks.map((sketchbook) => {
             return (
