@@ -6,6 +6,15 @@ import { getSketchbook } from '@/actions/sketchbook';
 
 import { chunkArray } from '@/util/array';
 
+export async function generateMetadata({ params }: { params: Promise<{ sketchbookId: string }> }) {
+  const sketchbookId = (await params).sketchbookId;
+  const sketchbook = await getSketchbook(sketchbookId);
+
+  return {
+    title: `${sketchbook?.name} - Sketchbooks`
+  };
+}
+
 async function Sketchbook({ params }: { params: Promise<{ sketchbookId: string }> }) {
   const sketchbookId = (await params).sketchbookId;
   const sketchbook = await getSketchbook(sketchbookId);

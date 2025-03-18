@@ -11,7 +11,7 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: 'Sketchbook',
+  title: 'Sketchbooks',
   description: 'Online sketchbook explorer.'
 };
 
