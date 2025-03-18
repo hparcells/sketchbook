@@ -1,5 +1,7 @@
 import Link from 'next/link';
-import { Link as ChakraLink, Image } from '@chakra-ui/react';
+import { Link as ChakraLink } from '@chakra-ui/react';
+
+import GalleryInfiniteScroll from '@/components/GalleryInfiniteScroll';
 
 import { getSketchbooks } from '@/actions/sketchbook';
 
@@ -22,24 +24,7 @@ async function GalleryPage() {
           <Link href='/'>Back</Link>
         </ChakraLink>
       </div>
-      <div className='flex flex-wrap'>
-        {images.map((image, i) => {
-          return (
-            <Image
-              src={image}
-              alt={image}
-              key={i}
-              loading='lazy'
-              className='
-            sm:w-1/2
-            md:w-1/3
-            lg:w-1/4
-            xl:w-1/5
-          '
-            />
-          );
-        })}
-      </div>
+      <GalleryInfiniteScroll images={images} />
     </>
   );
 }
