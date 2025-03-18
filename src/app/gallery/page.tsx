@@ -3,6 +3,8 @@ import { Link as ChakraLink, Image } from '@chakra-ui/react';
 
 import { getSketchbooks } from '@/actions/sketchbook';
 
+export const dynamic = 'force-dynamic';
+
 async function GalleryPage() {
   const sketchbooks = await getSketchbooks();
   const images = sketchbooks
